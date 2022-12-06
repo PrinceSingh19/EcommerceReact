@@ -5,7 +5,6 @@ import { AppContext, useProductContext } from "./context/productcontext";
 
 const About = () => {
 	const { featureProducts, products } = useProductContext();
-	console.log(featureProducts, products);
 	const data = {
 		name: "Prince Commerce",
 	};
