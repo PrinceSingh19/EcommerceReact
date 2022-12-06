@@ -1,43 +1,69 @@
 import styled from "styled-components";
 
 const Contact = () => {
-	const Wrapper = styled.section`
-		padding: 9rem 0 5rem 0;
-		text-align: center;
+	return (
+		<Wrapper>
+			<h2 className="common-heading">Contact Page</h2>
+			<iframe
+				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.479063122931!2d72.81468081423989!3d19.434901545644745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7a9a7633b4223%3A0x43a05328d9dd4463!2sAvdhut%20Apartment!5e0!3m2!1sen!2sin!4v1670300907396!5m2!1sen!2sin"
+				width="100%"
+				height="450"
+				style={{ border: 0 }}
+				allowFullScreen=""
+				loading="lazy"
+				referrerPolicy="no-referrer-when-downgrade"
+			></iframe>
+			<div className="container">
+				<div className="contact-form">
+					<form action="https://formspree.io/f/xqkjrqed" method="POST" className="contact-inputs">
+						<input type="text" placeholder="username" name="Username" required autoComplete="off" />
+						<input type="email" placeholder="Email" name="Email" required autoComplete="off" />
 
-		.container {
-			margin-top: 6rem;
+						<textarea
+							name="Message"
+							cols="30"
+							rows="10"
+							required
+							autoComplete="off"
+							placeholder="Enter Your Message"
+						></textarea>
+						<input type="submit" value="send" />
+					</form>
+				</div>
+			</div>
+		</Wrapper>
+	);
+};
+const Wrapper = styled.section`
+	padding: 9rem 0 5rem 0;
+	text-align: center;
 
-			.contact-form {
-				max-width: 50rem;
-				margin: auto;
+	.container {
+		margin-top: 6rem;
 
-				.contact-inputs {
-					display: flex;
-					flex-direction: column;
-					gap: 3rem;
+		.contact-form {
+			max-width: 50rem;
+			margin: auto;
 
-					input[type="submit"] {
-						cursor: pointer;
-						transition: all 0.2s;
+			.contact-inputs {
+				display: flex;
+				flex-direction: column;
+				gap: 3rem;
 
-						&:hover {
-							background-color: ${({ theme }) => theme.colors.white};
-							border: 1px solid ${({ theme }) => theme.colors.btn};
-							color: ${({ theme }) => theme.colors.btn};
-							transform: scale(0.9);
-						}
+				input[type="submit"] {
+					cursor: pointer;
+					transition: all 0.2s;
+
+					&:hover {
+						background-color: ${({ theme }) => theme.colors.white};
+						border: 1px solid ${({ theme }) => theme.colors.btn};
+						color: ${({ theme }) => theme.colors.btn};
+						transform: scale(0.9);
 					}
 				}
 			}
 		}
-	`;
-
-	return (
-		<Wrapper>
-			<h1>Contact Page</h1>
-		</Wrapper>
-	);
-};
+	}
+`;
 
 export default Contact;
