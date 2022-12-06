@@ -26,6 +26,8 @@ const SingleProduct = () => {
 		stock,
 		image,
 	} = singleProduct;
+	console.log(image);
+	console.log(singleProduct);
 	useEffect(() => {
 		getSingleProduct(`${API}?id=${id}`);
 	}, []);
@@ -96,6 +98,10 @@ const SingleProduct = () => {
 const Wrapper = styled.section`
 	.container {
 		padding: 9rem 0;
+	}
+	.product_images {
+		display: flex;
+		align-items: center;
 	}
 	.product-data {
 		display: flex;
