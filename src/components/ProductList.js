@@ -1,18 +1,16 @@
 import React from "react";
-import styled from "styled-components";
-import { useProductContext } from "../context/productcontext";
-import Product from "./Product";
+import { useFilterContext } from "../context/filter_context";
+import GridView from "./GridView";
 
 const ProductList = () => {
-	const { products } = useProductContext();
+	const { filter_products, setGridView } = useFilterContext();
 
-	return (
-		<div className="grid grid-three-column">
-			{products.map((currElem, index) => {
-				return <Product key={currElem.id} {...currElem} />;
-			})}
-		</div>
-	);
+	if (setGridView) {
+		return <GridView products={filter_products} />;
+	}
+	/* if(setGridView===false){
+        return <ListView products={filter_products}/>
+    } */
 };
 
 export default ProductList;
