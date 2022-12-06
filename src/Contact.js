@@ -9,6 +9,7 @@ const Contact = () => {
 				width="100%"
 				height="450"
 				style={{ border: 0 }}
+				title="gmaps"
 				allowFullScreen=""
 				loading="lazy"
 				referrerPolicy="no-referrer-when-downgrade"
