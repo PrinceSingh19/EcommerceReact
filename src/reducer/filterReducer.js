@@ -69,15 +69,19 @@ const filterReducer = (state, action) => {
 					return curElem.name.toLowerCase().includes(text);
 				});
 			}
-			if (category) {
-				tempFilterProduct = tempFilterProduct.filter((curElem) => {
-					return curElem.category === category;
-				});
+
+			if (category !== "all") {
+				tempFilterProduct = tempFilterProduct.filter((curElem) => curElem.category === category);
 			}
-			if (company) {
-				tempFilterProduct = tempFilterProduct.filter((curElem) => {
-					return curElem.company.toLowerCase() === company.toLowerCase();
-				});
+
+			if (company !== "all") {
+				tempFilterProduct = tempFilterProduct.filter(
+					(curElem) => curElem.company.toLowerCase() === company.toLowerCase()
+				);
+			}
+
+			if (color) {
+				tempFilterProduct = tempFilterProduct.filter((curElem) => curElem.colors.includes(color));
 			}
 			return {
 				...state,

@@ -15,7 +15,7 @@ const FilterSection = () => {
 		let newVal = data.map((currElem) => {
 			return currElem[property];
 		});
-		newVal = ["All", ...new Set(newVal)];
+		newVal = ["all", ...new Set(newVal)];
 		return newVal;
 	};
 
@@ -56,6 +56,7 @@ const FilterSection = () => {
 			</div>
 			<div className="filter-company">
 				<h3>Company</h3>
+
 				<form action="#">
 					<select
 						name="company"
@@ -63,17 +64,10 @@ const FilterSection = () => {
 						className="filter-company--select"
 						onClick={updateFilterValue}
 					>
-						{/* <option value="lowest">Price(lowest)</option>
-						<option value="#" disabled></option>
-						<option value="highest">Price(highest)</option>
-						<option value="#" disabled></option>
-						<option value="a-z">Price(a-z)</option>
-						<option value="#" disabled></option>
-						<option value="z-a">Price(z-a)</option> */}
-						{companyData.map((currElem, index) => {
+						{companyData.map((curElem, index) => {
 							return (
-								<option value={currElem} key={index} name="company">
-									{currElem}
+								<option key={index} value={curElem} name="company">
+									{curElem}
 								</option>
 							);
 						})}

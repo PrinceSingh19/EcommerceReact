@@ -13,6 +13,7 @@ const initialState = {
 	filters: {
 		text: "",
 		category: "all",
+		company: "all",
 	},
 };
 const FilterContextProvider = ({ children }) => {
