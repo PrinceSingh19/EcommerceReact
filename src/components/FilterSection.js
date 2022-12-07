@@ -15,13 +15,19 @@ const FilterSection = () => {
 		let newVal = data.map((currElem) => {
 			return currElem[property];
 		});
-		newVal = ["all", ...new Set(newVal)];
-		return newVal;
+		if (property === "colors") {
+			//return (newVal = ["all", ...new Set([].concat(...newVal))]);   //alternative approach
+			newVal = newVal.flat();
+		}
+		return (newVal = ["all", ...new Set(newVal)]);
 	};
 
 	//we need unique data
 	const categoryData = getUniqueData(all_products, "category");
 	const companyData = getUniqueData(all_products, "company");
+	const colorsData = getUniqueData(all_products, "colors");
+	//const newColors = [...new Set(colorsData.flat())]; //this is alternative approach
+	console.log(colorsData);
 	return (
 		<Wrapper>
 			<div className="filter-search">
