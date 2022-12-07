@@ -80,7 +80,7 @@ const filterReducer = (state, action) => {
 				);
 			}
 
-			if (color) {
+			if (color !== "all") {
 				tempFilterProduct = tempFilterProduct.filter((curElem) => curElem.colors.includes(color));
 			}
 			return {
