@@ -69,6 +69,11 @@ const filterReducer = (state, action) => {
 					return curElem.name.toLowerCase().includes(text);
 				});
 			}
+			if (category) {
+				tempFilterProduct = tempFilterProduct.filter((curElem) => {
+					return curElem.category === category;
+				});
+			}
 			return {
 				...state,
 				filter_products: tempFilterProduct,

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useFilterContext } from "../context/filter_context";
 const FilterSection = () => {
 	const {
-		filters: { text },
+		filters: { text, category },
 		updateFilterValue,
 		all_products,
 	} = useFilterContext();
@@ -14,7 +14,7 @@ const FilterSection = () => {
 			return currElem[property];
 		});
 		newVal = ["All", ...new Set(newVal)];
-		console.log(newVal);
+		return newVal;
 	};
 
 	//we need unique data
@@ -31,6 +31,25 @@ const FilterSection = () => {
 						placeholder="Search"
 					/>
 				</form>
+			</div>
+			<div className="filter-category">
+				<h3>Category</h3>
+				<div>
+					{categoryOnlyData.map((currElem, index) => {
+						return (
+							<button
+								key={index}
+								type="button"
+								name="category"
+								className="button"
+								value={currElem}
+								onClick={updateFilterValue}
+							>
+								{currElem}
+							</button>
+						);
+					})}
+				</div>
 			</div>
 		</Wrapper>
 	);
