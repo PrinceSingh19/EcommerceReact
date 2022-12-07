@@ -25,12 +25,12 @@ const FilterContextProvider = ({ children }) => {
 		return dispatch({ type: "SET_LIST_VIEW" });
 	};
 
-	const sorting = () => {
-		dispatch({ type: "GET_SORT_VALUE" });
+	const sorting = (e) => {
+		dispatch({ type: "GET_SORT_VALUE", payload: e.target.value });
 	};
 
 	useEffect(() => {
-		dispatch({ type: "SORTING_PRODUCTS", payload: products });
+		dispatch({ type: "SORTING_PRODUCTS" });
 	}, [state.sorting_value]);
 	useEffect(() => {
 		dispatch({ type: "LOAD_FILTER_PRODUCTS", payload: products });
