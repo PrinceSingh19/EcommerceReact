@@ -25,7 +25,33 @@ const filterReducer = (state, action) => {
 				...state,
 				sorting_value: sort_value,
 			};
-
+		case "SORTING_PRODUCTS":
+			let newSortData;
+			let tempSortProduct = [...action.payload];
+			if (state.sorting_value === "a-z") {
+				newSortData = tempSortProduct.sort((a, b) => {
+					return a.name.localeCompare(b.name);
+				});
+			}
+			if (state.sorting_value === "z-a") {
+				newSortData = tempSortProduct.sort((a, b) => {
+					return b.name.localeCompare(a.name);
+				});
+			}
+			if (state.sorting_value === "lowest") {
+				newSortData = tempSortProduct.sort((a, b) => {
+					return a.price - b.price;
+				});
+			}
+			if (state.sorting_value === "highest") {
+				newSortData = tempSortProduct.sort((a, b) => {
+					return b.price - a.price;
+				});
+			}
+			return {
+				...state,
+				filter_products: newSortData,
+			};
 		default:
 			return state;
 	}
