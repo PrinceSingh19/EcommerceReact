@@ -74,6 +74,11 @@ const filterReducer = (state, action) => {
 					return curElem.category === category;
 				});
 			}
+			if (company) {
+				tempFilterProduct = tempFilterProduct.filter((curElem) => {
+					return curElem.company.toLowerCase() === company.toLowerCase();
+				});
+			}
 			return {
 				...state,
 				filter_products: tempFilterProduct,

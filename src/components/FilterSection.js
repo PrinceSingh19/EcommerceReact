@@ -6,8 +6,10 @@ const FilterSection = () => {
 		filters: { text, category },
 		updateFilterValue,
 		all_products,
+		filter_products,
+		sorting,
 	} = useFilterContext();
-	console.log(all_products);
+	console.log(filter_products);
 	// to get the unique data of each field
 	const getUniqueData = (data, property) => {
 		let newVal = data.map((currElem) => {
@@ -18,7 +20,8 @@ const FilterSection = () => {
 	};
 
 	//we need unique data
-	const categoryOnlyData = getUniqueData(all_products, "category");
+	const categoryData = getUniqueData(all_products, "category");
+	const companyData = getUniqueData(all_products, "company");
 	return (
 		<Wrapper>
 			<div className="filter-search">
@@ -35,7 +38,7 @@ const FilterSection = () => {
 			<div className="filter-category">
 				<h3>Category</h3>
 				<div>
-					{categoryOnlyData.map((currElem, index) => {
+					{categoryData.map((currElem, index) => {
 						return (
 							<button
 								key={index}
@@ -50,6 +53,32 @@ const FilterSection = () => {
 						);
 					})}
 				</div>
+			</div>
+			<div className="filter-company">
+				<h3>Company</h3>
+				<form action="#">
+					<select
+						name="company"
+						id="company"
+						className="filter-company--select"
+						onClick={updateFilterValue}
+					>
+						{/* <option value="lowest">Price(lowest)</option>
+						<option value="#" disabled></option>
+						<option value="highest">Price(highest)</option>
+						<option value="#" disabled></option>
+						<option value="a-z">Price(a-z)</option>
+						<option value="#" disabled></option>
+						<option value="z-a">Price(z-a)</option> */}
+						{companyData.map((currElem, index) => {
+							return (
+								<option value={currElem} key={index} name="company">
+									{currElem}
+								</option>
+							);
+						})}
+					</select>
+				</form>
 			</div>
 		</Wrapper>
 	);
