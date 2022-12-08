@@ -18,6 +18,13 @@ const cartReducer = (state, action) => {
 			cart: [...state.cart, cartProduct],
 		};
 	}
+	if (action.type === "REMOVE_FROM_CART") {
+		let { id } = action.payload;
+		return {
+			...state,
+			cart: state.cart.filter((x) => x.id !== id),
+		};
+	}
 	return state;
 };
 
