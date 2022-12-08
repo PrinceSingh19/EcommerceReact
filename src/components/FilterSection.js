@@ -10,7 +10,6 @@ const FilterSection = () => {
 		filter_products,
 		sorting,
 	} = useFilterContext();
-	console.log(filter_products);
 	// to get the unique data of each field
 	const getUniqueData = (data, property) => {
 		let newVal = data.map((currElem) => {
@@ -28,7 +27,7 @@ const FilterSection = () => {
 	const companyData = getUniqueData(all_products, "company");
 	const colorsData = getUniqueData(all_products, "colors");
 	//const newColors = [...new Set(colorsData.flat())]; //this is alternative approach
-	console.log(colorsData);
+
 	return (
 		<Wrapper>
 			<div className="filter-search">

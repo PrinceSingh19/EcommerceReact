@@ -1,10 +1,28 @@
 const filterReducer = (state, action) => {
 	switch (action.type) {
 		case "LOAD_FILTER_PRODUCTS":
+			let priceArr = action.payload.map((currElem) => currElem.price);
+			//1st way
+			/* let maxPrice = priceArr.reduce((acc, curr) => {
+				if (curr > acc) {
+					acc = curr;
+				}
+				return acc;
+			}, 0); */
+			//2nd way
+			let maxPrice = priceArr.reduce((acc, curr) => Math.max(acc, curr), 0);
+			//3rd way
+			//let maxPrice = Math.max(...priceArr);
+
 			return {
 				...state,
 				filter_products: [...action.payload],
 				all_products: [...action.payload],
+				filters: {
+					...state.filters,
+					maxPrice: maxPrice,
+					price: maxPrice,
+				},
 			};
 		case "SET_GRID_VIEW":
 			return {
