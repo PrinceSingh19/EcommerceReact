@@ -41,8 +41,9 @@ const CartProvider = ({ children }) => {
 
 	//to add data in localStorage
 	useEffect(() => {
-		dispatch({ type: "CART_ITEM_UPDATE" });
-		dispatch({ type: "CART_PRICE_UPDATE" });
+		/* dispatch({ type: "CART_ITEM_UPDATE" });
+		dispatch({ type: "CART_PRICE_UPDATE" }); */
+		dispatch({ type: "CART_TOTAL_PRICE_AMOUNT" });
 		localStorage.setItem("cartItem", JSON.stringify(state.cart));
 	}, [state.cart]);
 	return (

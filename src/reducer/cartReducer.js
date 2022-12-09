@@ -104,8 +104,7 @@ const cartReducer = (state, action) => {
 			cart: updatedProduct,
 		};
 	}
-
-	if (action.type === "CART_ITEM_UPDATE") {
+	/* 	if (action.type === "CART_ITEM_UPDATE") {
 		let updateCartValue = state.cart.reduce((acc, curr) => {
 			let { amount } = curr;
 			acc = acc + amount;
@@ -127,6 +126,26 @@ const cartReducer = (state, action) => {
 		return {
 			...state,
 			total_price: totalUpdateValue,
+		};
+	} */
+	//instead of doing above two step the following can be reduced to one step
+	if (action.type === "CART_TOTAL_PRICE_AMOUNT") {
+		let { total_item, total_price } = state.cart.reduce(
+			(acc, curr) => {
+				let { amount, price } = curr;
+				acc.total_item += amount;
+				acc.total_price += amount * price;
+				return acc;
+			},
+			{
+				total_item: 0,
+				total_price: 0,
+			}
+		);
+		return {
+			...state,
+			total_item: total_item,
+			total_price: total_price,
 		};
 	}
 	return state;
