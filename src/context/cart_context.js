@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useReducer, useContext, createContext } from "react";
+import { useReducer, useContext, createContext , useEffect} from "react";
 import reducer from "../reducer/cartReducer";
 const CartContext = createContext();
 const getLocalCartData = () => {

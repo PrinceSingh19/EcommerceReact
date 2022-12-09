@@ -1,8 +1,5 @@
 import axios from "axios";
-import { useReducer } from "react";
-import { useEffect } from "react";
-import { useContext } from "react";
-import { createContext } from "react";
+import { useReducer, useEffect, useContext, createContext } from "react";
 import reducer from "../reducer/productReducer";
 
 const AppContext = createContext();

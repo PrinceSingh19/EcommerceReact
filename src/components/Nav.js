@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { FiShoppingCart } from "react-icons/fi";
 import { CgMenu, CgClose } from "react-icons/cg";
-import { useState } from "react";
 import { useCartContext } from "../context/cart_context";
 
 const NavBar = styled.nav`

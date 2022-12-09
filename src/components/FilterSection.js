@@ -6,11 +6,9 @@ import FormatPrice from "../helpers/FormatPrice";
 import { Button } from "../styles/Button";
 const FilterSection = () => {
 	const {
-		filters: { text, category, color, price, maxPrice, minPrice },
+		filters: { text, color, price, maxPrice, minPrice },
 		updateFilterValue,
 		all_products,
-		filter_products,
-		sorting,
 		clearFilters,
 	} = useFilterContext();
 	// to get the unique data of each field

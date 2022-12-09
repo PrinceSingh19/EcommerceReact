@@ -1,19 +1,11 @@
 import React from "react";
-import { useState } from "react";
 import { FaTrash } from "react-icons/fa";
 import { useCartContext } from "../context/cart_context";
 import FormatPrice from "../helpers/FormatPrice";
-
 import CartAmountToggle from "./CartAmountToggle";
 
 const CartItem = ({ id, name, image, color, price, amount }) => {
 	const { removeFromCart, setDecrease, setIncrease } = useCartContext();
-	/* const setDecrease = () => {
-		return newAmount <= max ? setNewAmount(newAmount - 1) : setNewAmount(1);
-	};
-	const setIncrease = () => {
-		return newAmount < max ? setNewAmount(newAmount + 1) : setNewAmount(max);
-	}; */
 
 	return (
 		<>
