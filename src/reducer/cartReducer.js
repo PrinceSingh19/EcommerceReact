@@ -80,7 +80,7 @@ const cartReducer = (state, action) => {
 			cart: updatedProduct,
 		};
 	}
-
+	// to decrease the amount in cart item
 	if (action.type === "SET_INCREMENT") {
 		let updatedProduct = state.cart.map((currElem) => {
 			if (currElem.id === action.payload) {
@@ -101,6 +101,19 @@ const cartReducer = (state, action) => {
 		return {
 			...state,
 			cart: updatedProduct,
+		};
+	}
+
+	if ((action.type = "CART_ITEM_UPDATE")) {
+		let updateCartValue = state.cart.reduce((acc, curr) => {
+			let { amount } = curr;
+			acc = acc + amount;
+			return acc;
+		}, 0);
+		console.log(updateCartValue);
+		return {
+			...state,
+			total_item: updateCartValue,
 		};
 	}
 	return state;

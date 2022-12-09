@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { FiShoppingCart } from "react-icons/fi";
 import { CgMenu, CgClose } from "react-icons/cg";
 import { useState } from "react";
+import { useCartContext } from "../context/cart_context";
 
 const NavBar = styled.nav`
 	.navbar-lists {
@@ -138,7 +139,8 @@ const NavBar = styled.nav`
 `;
 const Nav = () => {
 	const [menuIcon, setMenuIcon] = useState();
-
+	const { total_item } = useCartContext();
+	console.log(total_item);
 	return (
 		<NavBar>
 			<div className={menuIcon ? "navbar active" : "navbar"}>
@@ -170,7 +172,7 @@ const Nav = () => {
 							onClick={() => setMenuIcon(false)}
 						>
 							<FiShoppingCart className="cart-trolley" />
-							<span className="cart-total--item">10</span>
+							<span className="cart-total--item">{total_item}</span>
 						</NavLink>
 					</li>
 				</ul>

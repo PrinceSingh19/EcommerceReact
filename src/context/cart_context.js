@@ -12,7 +12,7 @@ const getLocalCartData = () => {
 const initialState = {
 	cart: getLocalCartData(),
 	total_item: "",
-	total_amount: "",
+	total_price: "",
 	shipping_fee: 50000,
 };
 const CartProvider = ({ children }) => {
@@ -41,6 +41,7 @@ const CartProvider = ({ children }) => {
 
 	//to add data in localStorage
 	useEffect(() => {
+		dispatch({ type: "CART_ITEM_UPDATE" });
 		localStorage.setItem("cartItem", JSON.stringify(state.cart));
 	}, [state.cart]);
 	return (
