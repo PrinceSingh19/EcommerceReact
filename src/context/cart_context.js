@@ -30,12 +30,23 @@ const CartProvider = ({ children }) => {
 		dispatch({ type: "CLEAR_CART" });
 	};
 
+	//to increase the cart item amount
+	const setIncrease = (id) => {
+		dispatch({ type: "SET_INCREMENT", payload: id });
+	};
+	//to decrease the cart item amount
+	const setDecrease = (id) => {
+		dispatch({ type: "SET_DECREMENT", payload: id });
+	};
+
 	//to add data in localStorage
 	useEffect(() => {
 		localStorage.setItem("cartItem", JSON.stringify(state.cart));
 	}, [state.cart]);
 	return (
-		<CartContext.Provider value={{ ...state, addToCart, removeFromCart, clearCart }}>
+		<CartContext.Provider
+			value={{ ...state, addToCart, removeFromCart, clearCart, setDecrease, setIncrease }}
+		>
 			{children}
 		</CartContext.Provider>
 	);
