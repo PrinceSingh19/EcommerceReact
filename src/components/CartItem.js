@@ -14,6 +14,7 @@ const CartItem = ({ id, name, image, color, price, amount }) => {
 	const setIncrease = () => {
 		return newAmount < max ? setNewAmount(newAmount + 1) : setNewAmount(max);
 	}; */
+
 	return (
 		<>
 			<div className="cart_heading grid grid-five-column">

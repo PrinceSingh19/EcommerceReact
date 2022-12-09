@@ -1,6 +1,7 @@
 const cartReducer = (state, action) => {
 	//to add items in cart
 	if (action.type === "ADD_TO_CART") {
+		console.log(state.cart);
 		let { id, amount, color, product } = action.payload;
 		const { name, price } = product;
 		//finding existing product
@@ -104,7 +105,7 @@ const cartReducer = (state, action) => {
 		};
 	}
 
-	if ((action.type = "CART_ITEM_UPDATE")) {
+	if (action.type === "CART_ITEM_UPDATE") {
 		let updateCartValue = state.cart.reduce((acc, curr) => {
 			let { amount } = curr;
 			acc = acc + amount;
@@ -114,6 +115,18 @@ const cartReducer = (state, action) => {
 		return {
 			...state,
 			total_item: updateCartValue,
+		};
+	}
+
+	if (action.type === "CART_PRICE_UPDATE") {
+		let totalUpdateValue = state.cart.reduce((acc, curr) => {
+			let { amount, price } = curr;
+			acc = acc + amount * price;
+			return acc;
+		}, 0);
+		return {
+			...state,
+			total_price: totalUpdateValue,
 		};
 	}
 	return state;
