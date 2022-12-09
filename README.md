@@ -23,8 +23,8 @@
 - To understand Reducer
 - To handle the API
 
-
-
+### Credits
+- Thapa Technical
 
 
 
