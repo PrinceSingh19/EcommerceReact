@@ -1,4 +1,4 @@
-import { useReducer, useContext, createContext , useEffect} from "react";
+import { useReducer, useContext, createContext, useEffect } from "react";
 import reducer from "../reducer/cartReducer";
 const CartContext = createContext();
 const getLocalCartData = () => {
@@ -22,7 +22,7 @@ const CartProvider = ({ children }) => {
 	};
 	//to remove items from cart
 	const removeFromCart = (id) => {
-		dispatch({ type: "REMOVE_FROM_CART", payload: { id } });
+		dispatch({ type: "REMOVE_FROM_CART", payload: id });
 	};
 	//to clear items in cart
 	const clearCart = () => {

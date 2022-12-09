@@ -139,7 +139,6 @@ const NavBar = styled.nav`
 const Nav = () => {
 	const [menuIcon, setMenuIcon] = useState();
 	const { total_item } = useCartContext();
-	console.log(total_item);
 	return (
 		<NavBar>
 			<div className={menuIcon ? "navbar active" : "navbar"}>
