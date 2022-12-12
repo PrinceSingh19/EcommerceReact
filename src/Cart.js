@@ -4,9 +4,12 @@ import { useCartContext } from "./context/cart_context";
 import { NavLink } from "react-router-dom";
 import { Button } from "./styles/Button";
 import FormatPrice from "./helpers/FormatPrice";
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart } from "./redux/stateSlices/cartSlice";
 
 const Cart = () => {
-	const { cart, clearCart, total_price, shipping_fee } = useCartContext();
+	const { cart, total_price, shipping_fee } = useSelector((state) => state.cart);
+	const dispatch = useDispatch();
 	if (cart.length === 0) {
 		return (
 			<EmptyDiv>
@@ -36,7 +39,7 @@ const Cart = () => {
 					<NavLink to="/products">
 						<Button>Continue Shopping</Button>
 					</NavLink>
-					<Button className="btn-clear" onClick={clearCart}>
+					<Button className="btn-clear" onClick={() => dispatch(clearCart())}>
 						Clear Cart
 					</Button>
 				</div>

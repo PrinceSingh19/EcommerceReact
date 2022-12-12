@@ -3,10 +3,10 @@ import { FaCheck } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { useCartContext } from "../context/cart_context";
+import { addToCart } from "../redux/stateSlices/cartSlice";
 import { Button } from "../styles/Button";
 import CartAmountToggle from "./CartAmountToggle";
 const AddToCart = ({ product }) => {
-	const { addToCart } = useCartContext();
 	const { id, stock, colors } = product;
 	const [color, setColor] = useState(colors[0]);
 	const [amount, setAmount] = useState(1);

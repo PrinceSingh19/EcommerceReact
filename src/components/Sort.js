@@ -2,8 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { BsFillGridFill, BsList } from "react-icons/bs";
 import { useFilterContext } from "../context/filter_context";
+import { useDispatch } from "react-redux";
 const Sort = () => {
 	const { filter_products, grid_view, setGridView, setListView, sorting } = useFilterContext();
+	const dispatch = useDispatch();
+	function sorted(e) {
+		let value = e.target.value;
+		dispatch(sorting(value));
+	}
 	return (
 		<Wrapper classNa me="sort-section">
 			<div className="sorting-list--grid">
@@ -18,12 +24,7 @@ const Sort = () => {
 			<div className="sort-selection">
 				<form action="#">
 					<label htmlFor="sort"></label>
-					<select
-						name="sort"
-						id="sort"
-						className="sort-selection--style"
-						onClick={(e) => sorting(e)}
-					>
+					<select name="sort" id="sort" className="sort-selection--style" onClick={sorted}>
 						<option value="lowest">Price(lowest)</option>
 						<option value="#" disabled></option>
 						<option value="highest">Price(highest)</option>

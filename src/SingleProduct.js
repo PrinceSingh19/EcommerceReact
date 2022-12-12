@@ -10,12 +10,14 @@ import { TbReplace, TbTruckDelivery } from "react-icons/tb";
 import { MdSecurity } from "react-icons/md";
 import Star from "./Star";
 import AddToCart from "./components/AddToCart";
+import { getSingleProduct } from "./redux/stateSlices/singleProduct";
+import { useDispatch, useSelector } from "react-redux";
 
 const API = "https://api.pujakaitem.com/api/products";
 
 const SingleProduct = () => {
 	const { id } = useParams();
-	const { getSingleProduct, singleProduct, isSingleLoading } = useProductContext();
+	const { singleProduct, isSingleLoading } = useSelector((state) => state.singleProduct);
 	const {
 		// eslint-disable-next-line
 		id: alias,
@@ -28,11 +30,11 @@ const SingleProduct = () => {
 		stock,
 		image,
 	} = singleProduct;
-	console.log(image);
+	const dispatch = useDispatch();
 	useEffect(() => {
-		getSingleProduct(`${API}?id=${id}`);
+		dispatch(getSingleProduct(`${API}?id=${id}`));
 		// eslint-disable-next-line
-	}, []); 
+	}, []);
 
 	if (isSingleLoading) {
 		return <div className="page_loading">Loading....</div>;

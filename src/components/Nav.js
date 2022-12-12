@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { FiShoppingCart } from "react-icons/fi";
 import { CgMenu, CgClose } from "react-icons/cg";
 import { useCartContext } from "../context/cart_context";
+import { useSelector } from "react-redux";
 
 const NavBar = styled.nav`
 	.navbar-lists {
@@ -138,7 +139,7 @@ const NavBar = styled.nav`
 `;
 const Nav = () => {
 	const [menuIcon, setMenuIcon] = useState();
-	const { total_item } = useCartContext();
+	const { total_item } = useSelector((state) => state.cart);
 	return (
 		<NavBar>
 			<div className={menuIcon ? "navbar active" : "navbar"}>

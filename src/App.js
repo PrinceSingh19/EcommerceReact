@@ -11,6 +11,16 @@ import { GlobalStyle } from "./GlobalStyle";
 import { ThemeProvider } from "styled-components";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "./redux/stateSlices/productsSlice";
+import { getSingleProduct } from "./redux/stateSlices/singleProduct";
+import {
+	filterProducts,
+	settingFilterProducts,
+	sortedProducts,
+} from "./redux/stateSlices/filterProductsSlice";
+import { cartTotalPriceAmount } from "./redux/stateSlices/cartSlice";
 const App = () => {
 	const theme = {
 		colors: {
@@ -34,7 +44,30 @@ const App = () => {
 			tab: "998px",
 		},
 	};
-
+	const { products } = useSelector((state) => state.products);
+	const { sorting_value, filters } = useSelector((state) => state.filterProducts);
+	const { cart } = useSelector((state) => state.cart);
+	const dispatch = useDispatch();
+	const filteredProducts = () => {
+		dispatch(filterProducts(products));
+	};
+	const sortingProducts = () => {
+		dispatch(sortedProducts());
+	};
+	const setFilterProducts = () => {
+		dispatch(settingFilterProducts());
+	};
+	const totalCartAmount = () => {
+		dispatch(cartTotalPriceAmount());
+	};
+	useEffect(() => {
+		dispatch(getProducts());
+		//filteredProducts();
+		//sortingProducts();
+		//setFilterProducts();
+		totalCartAmount();
+		localStorage.setItem("cartItem", JSON.stringify(cart));
+	}, [products, sorting_value, filters, cart]);
 	return (
 		<ThemeProvider theme={theme}>
 			<Router>
