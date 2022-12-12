@@ -28,11 +28,11 @@ const SingleProduct = () => {
 		stock,
 		image,
 	} = singleProduct;
-
+	console.log(image);
 	useEffect(() => {
 		getSingleProduct(`${API}?id=${id}`);
 		// eslint-disable-next-line
-	}, []);
+	}, []); 
 
 	if (isSingleLoading) {
 		return <div className="page_loading">Loading....</div>;

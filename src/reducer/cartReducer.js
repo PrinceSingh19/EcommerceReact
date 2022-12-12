@@ -2,7 +2,6 @@ const cartReducer = (state, action) => {
 	switch (action.type) {
 		//to add items in cart
 		case "ADD_TO_CART":
-			console.log(state.cart);
 			let { id, amount, color, product } = action.payload;
 			//finding existing product
 			let existingProduct = state.cart.find((currElem) => currElem.id === id + color);
