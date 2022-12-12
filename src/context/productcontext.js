@@ -14,7 +14,6 @@ const intialState = {
 };
 const AppProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, intialState);
-
 	//api call for initial product fetching
 	const getProducts = async (url) => {
 		dispatch({ type: "SET_LOADING" });

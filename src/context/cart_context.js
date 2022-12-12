@@ -6,7 +6,7 @@ const getLocalCartData = () => {
 	/* if (localCartData === []) {
 		return [];
 	}
-	return JSON.parse(localCartData);  */ 
+	return JSON.parse(localCartData);  */
 	const parsedData = JSON.parse(localCartData);
 	if (!Array.isArray(parsedData)) return [];
 	return parsedData;
