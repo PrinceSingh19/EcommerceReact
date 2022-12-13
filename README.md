@@ -9,6 +9,9 @@
 3: run the project using   `npm start`
    
    ------------ 
+### Note:
+<strong>I have implemented the same project using redux toolkit. So if you want to have look please visit to redux branch of this repo.</strong>
+
    
 ### Technologies used
 1. HTML
