@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { Button } from "./styles/Button";
 import FormatPrice from "./helpers/FormatPrice";
 import { useDispatch, useSelector } from "react-redux";
+import { clearCart } from "./redux/stateSlices/cartSlice";
 
 const Cart = () => {
 	const { cart, total_price, shipping_fee } = useSelector((state) => state.cart);
