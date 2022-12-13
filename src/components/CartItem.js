@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { FaTrash } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { useCartContext } from "../context/cart_context";

@@ -13,15 +13,18 @@ const ProductList = () => {
 	const { filter_products, grid_view, sorting_value, filters } = useSelector(
 		(state) => state.filterProducts
 	);
-	const { products, featureProducts } = useSelector((state) => state.products);
+	const { products } = useSelector((state) => state.products);
 	const dispatch = useDispatch();
-	/* useEffect(() => {
-		settingFilterProducts();
-		sortedProducts();
-	}, [products, filters, sorting_value]);
 	useEffect(() => {
-		filterProducts(products);
-	}, [products]); */
+		dispatch(settingFilterProducts());
+	}, [filters, products]);
+
+	useEffect(() => {
+		dispatch(sortedProducts());
+	}, [sorting_value]);
+	useEffect(() => {
+		dispatch(filterProducts(products));
+	}, [products]);
 
 	if (grid_view === true) {
 		return <GridView products={filter_products} />;

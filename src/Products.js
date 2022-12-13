@@ -14,14 +14,14 @@ import {
 const Products = () => {
 	const { sorting_value, filters, grid_view } = useSelector((state) => state.filterProducts);
 	const { products } = useSelector((state) => state.products);
-	const dispatch = useDispatch();
+	/* const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(sortedProducts());
 		dispatch(settingFilterProducts());
 	}, [sorting_value, filters, products]);
 	useEffect(() => {
 		dispatch(filterProducts(products));
-	}, [products]);
+	}, [products]); */
 	return (
 		<Wrapper>
 			<div className="container grid grid-filter-column">

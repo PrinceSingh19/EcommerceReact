@@ -13,7 +13,7 @@ const FilterSection = () => {
 		all_products,
 		filter_products,
 	} = useSelector((state) => state.filterProducts);
-	console.log(text, filter_products);
+
 	// to get the unique data of each field
 	const getUniqueData = (data, property) => {
 		let newVal = data.map((currElem) => {

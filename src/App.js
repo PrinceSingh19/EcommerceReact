@@ -45,7 +45,6 @@ const App = () => {
 		},
 	};
 	const { products, featureProducts } = useSelector((state) => state.products);
-	console.log(products);
 	//console.log(featureProducts);
 	const { sorting_value, filters, filter_products } = useSelector((state) => state.filterProducts);
 	const { cart } = useSelector((state) => state.cart);
@@ -66,12 +65,9 @@ const App = () => {
 	}, []);
 
 	useEffect(() => {
-		dispatch(filterProducts(products));
-	}, [products]);
-
-	useEffect(() => {
 		dispatch(cartTotalPriceAmount());
-	}, [dispatch]);
+		localStorage.setItem("cartItem", JSON.stringify(cart));
+	}, [cart]);
 	return (
 		<ThemeProvider theme={theme}>
 			<Router>

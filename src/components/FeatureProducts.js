@@ -5,9 +5,9 @@ import styled from "styled-components";
 import { useSelector } from "react-redux";
 const FeatureProducts = () => {
 	const { isLoading, featureProducts } = useSelector((state) => state.products);
-
-	console.log(featureProducts);
-
+	if (isLoading) {
+		return <div>.....Loading</div>;
+	}
 	return (
 		<Wrapper>
 			<div className="container">

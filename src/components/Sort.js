@@ -4,6 +4,7 @@ import { BsFillGridFill, BsList } from "react-icons/bs";
 import { useFilterContext } from "../context/filter_context";
 import { useDispatch, useSelector } from "react-redux";
 import { sorting, setGridView, setListView } from "../redux/stateSlices/filterProductsSlice";
+import { useEffect } from "react";
 const Sort = () => {
 	const { filter_products, grid_view } = useSelector((state) => state.filterProducts);
 	const dispatch = useDispatch();
@@ -11,10 +12,16 @@ const Sort = () => {
 	return (
 		<Wrapper classNa me="sort-section">
 			<div className="sorting-list--grid">
-				<button className={grid_view ? "sort-btn active" : "sort-btn"} onClick={setGridView}>
+				<button
+					className={grid_view ? "sort-btn active" : "sort-btn"}
+					onClick={() => dispatch(setGridView())}
+				>
 					<BsFillGridFill className="icon" />
 				</button>
-				<button className={!grid_view ? "sort-btn active" : "sort-btn"} onClick={setListView}>
+				<button
+					className={!grid_view ? "sort-btn active" : "sort-btn"}
+					onClick={() => dispatch(setListView())}
+				>
 					<BsList className="icon" />
 				</button>
 			</div>

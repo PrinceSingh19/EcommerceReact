@@ -12,10 +12,6 @@ const Cart = () => {
 	const { cart, total_price, shipping_fee } = useSelector((state) => state.cart);
 	const dispatch = useDispatch();
 
-	useEffect(() => {
-		dispatch(cartTotalPriceAmount());
-		localStorage.setItem("cartItem", JSON.stringify(cart));
-	}, [cart, dispatch]);
 	if (cart.length === 0) {
 		return (
 			<EmptyDiv>
