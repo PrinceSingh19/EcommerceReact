@@ -1,4 +1,3 @@
-import { assertFunctionParent } from "@babel/types";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
@@ -16,8 +15,8 @@ const initialState = {
 		minPrice: 0,
 	},
 };
-
 // Below I have added both the ways to update state i.e. traditional redux way and newly immer way of redux toolkit
+
 export const filterProductsSlice = createSlice({
 	name: "filterProducts",
 	initialState,
@@ -34,14 +33,14 @@ export const filterProductsSlice = createSlice({
 				return acc;
 			}, 0); */
 			//2nd way
-			let maxPrice = priceArr.reduce((acc, curr) => Math.max(acc, curr), 0);
+			let maximumPrice = priceArr.reduce((acc, curr) => Math.max(acc, curr), 0);
 			//3rd way
 			//let maxPrice = Math.max(...priceArr);
 
 			state.filter_products = [...action.payload];
 			state.all_products = [...action.payload];
-			state.filters.maxPrice = maxPrice;
-			state.filters.price = maxPrice;
+			state.filters.maxPrice = maximumPrice;
+			state.filters.price = maximumPrice;
 			/* return {
 				...state,
 				filter_products: [...action.payload],
@@ -105,9 +104,7 @@ export const filterProductsSlice = createSlice({
 			state.filters.category = "all";
 			state.filters.company = "all";
 			state.filters.color = "all";
-			state.filters.maxPrice = state.filters.maxPrice;
 			state.filters.price = state.filters.maxPrice;
-			state.filters.minPrice = state.filters.minPrice;
 			/* return {
 				...state,
 				filters: {

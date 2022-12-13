@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useFilterContext } from "../context/filter_context";
 import {
 	filterProducts,
 	settingFilterProducts,
@@ -32,9 +31,6 @@ const ProductList = () => {
 	if (grid_view === false) {
 		return <ListView products={filter_products} />;
 	}
-	/* if(setGridView===false){
-        return <ListView products={filter_products}/>
-    } */
 };
 
 export default ProductList;

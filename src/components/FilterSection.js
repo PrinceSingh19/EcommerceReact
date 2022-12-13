@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { useFilterContext } from "../context/filter_context";
 import { FaCheck } from "react-icons/fa";
 import FormatPrice from "../helpers/FormatPrice";
 import { Button } from "../styles/Button";
@@ -11,7 +10,6 @@ const FilterSection = () => {
 	const {
 		filters: { text, color, price, maxPrice, minPrice },
 		all_products,
-		filter_products,
 	} = useSelector((state) => state.filterProducts);
 
 	// to get the unique data of each field

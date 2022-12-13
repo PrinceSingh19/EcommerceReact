@@ -3,7 +3,6 @@ import { FaCheck } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { useCartContext } from "../context/cart_context";
 import { addToCart } from "../redux/stateSlices/cartSlice";
 import { Button } from "../styles/Button";
 import CartAmountToggle from "./CartAmountToggle";

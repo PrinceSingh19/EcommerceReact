@@ -1,10 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { BsFillGridFill, BsList } from "react-icons/bs";
-import { useFilterContext } from "../context/filter_context";
 import { useDispatch, useSelector } from "react-redux";
 import { sorting, setGridView, setListView } from "../redux/stateSlices/filterProductsSlice";
-import { useEffect } from "react";
 const Sort = () => {
 	const { filter_products, grid_view } = useSelector((state) => state.filterProducts);
 	const dispatch = useDispatch();

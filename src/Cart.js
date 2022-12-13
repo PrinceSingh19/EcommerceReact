@@ -1,12 +1,9 @@
 import styled from "styled-components";
 import CartItem from "./components/CartItem";
-import { useCartContext } from "./context/cart_context";
 import { NavLink } from "react-router-dom";
 import { Button } from "./styles/Button";
 import FormatPrice from "./helpers/FormatPrice";
 import { useDispatch, useSelector } from "react-redux";
-import { cartTotalPriceAmount, clearCart } from "./redux/stateSlices/cartSlice";
-import { useEffect } from "react";
 
 const Cart = () => {
 	const { cart, total_price, shipping_fee } = useSelector((state) => state.cart);
