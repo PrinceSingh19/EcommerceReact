@@ -32,11 +32,6 @@ const FilterSection = () => {
 	const colorsData = getUniqueData(all_products, "colors");
 	//const newColors = [...new Set(colorsData.flat())]; //this is alternative approach
 
-	const updateFilters = (e) => {
-		let name = e.target.name;
-		let value = e.target.value;
-		dispatch(updateFilterValue({ name, value }));
-	};
 	return (
 		<Wrapper>
 			<div className="filter-search">
@@ -45,7 +40,9 @@ const FilterSection = () => {
 						type="text"
 						name="text"
 						value={text}
-						onChange={(e) => updateFilters(e)}
+						onChange={(e) =>
+							dispatch(updateFilterValue({ name: e.target.name, value: e.target.value }))
+						}
 						placeholder="Search"
 					/>
 				</form>
@@ -61,7 +58,9 @@ const FilterSection = () => {
 								name="category"
 								className="button"
 								value={currElem}
-								onClick={(e) => updateFilters(e)}
+								onClick={(e) =>
+									dispatch(updateFilterValue({ name: e.target.name, value: e.target.value }))
+								}
 							>
 								{currElem}
 							</button>
@@ -77,7 +76,9 @@ const FilterSection = () => {
 						name="company"
 						id="company"
 						className="filter-company--select"
-						onClick={(e) => updateFilters(e)}
+						onClick={(e) =>
+							dispatch(updateFilterValue({ name: e.target.name, value: e.target.value }))
+						}
 					>
 						{companyData.map((curElem, index) => {
 							return (
@@ -99,7 +100,9 @@ const FilterSection = () => {
 									type="button"
 									className="color-all--style"
 									key={index}
-									onClick={(e) => updateFilters(e)}
+									onClick={(e) =>
+										dispatch(updateFilterValue({ name: e.target.name, value: e.target.value }))
+									}
 									value={curColor}
 									name="color"
 								>
@@ -113,7 +116,9 @@ const FilterSection = () => {
 								className={color === curColor ? "btnStyle active" : "btnStyle"}
 								style={{ backgroundColor: curColor }}
 								key={index}
-								onClick={(e) => updateFilters(e)}
+								onClick={(e) =>
+									dispatch(updateFilterValue({ name: e.target.name, value: e.target.value }))
+								}
 								value={curColor}
 								name="color"
 							>
@@ -134,11 +139,13 @@ const FilterSection = () => {
 					name="price"
 					max={maxPrice}
 					value={price}
-					onChange={(e) => updateFilters(e)}
+					onChange={(e) =>
+						dispatch(updateFilterValue({ name: e.target.name, value: e.target.value }))
+					}
 				/>
 			</div>
 			<div className="filter-clear">
-				<Button className="btn" onClick={dispatch(clearFilters())}>
+				<Button className="btn" onClick={() => dispatch(clearFilters())}>
 					clear filters
 				</Button>
 			</div>

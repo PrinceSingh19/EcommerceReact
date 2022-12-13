@@ -47,7 +47,7 @@ const App = () => {
 	const { products, featureProducts } = useSelector((state) => state.products);
 	console.log(products);
 	//console.log(featureProducts);
-	const { sorting_value, filters } = useSelector((state) => state.filterProducts);
+	const { sorting_value, filters, filter_products } = useSelector((state) => state.filterProducts);
 	const { cart } = useSelector((state) => state.cart);
 	const dispatch = useDispatch();
 
@@ -64,6 +64,14 @@ const App = () => {
 	useEffect(() => {
 		dispatch(getProducts());
 	}, []);
+
+	useEffect(() => {
+		dispatch(filterProducts(products));
+	}, [products]);
+
+	useEffect(() => {
+		dispatch(cartTotalPriceAmount());
+	}, [dispatch]);
 	return (
 		<ThemeProvider theme={theme}>
 			<Router>

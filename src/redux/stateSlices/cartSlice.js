@@ -23,6 +23,7 @@ export const cartSlice = createSlice({
 	reducers: {
 		addToCart: (state, action) => {
 			let { id, color, amount, product } = action.payload;
+			console.log(action.payload);
 			//finding existing product
 			let existingProduct = state.cart.find((currElem) => currElem.id === id + color);
 			if (existingProduct) {

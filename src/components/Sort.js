@@ -7,10 +7,7 @@ import { sorting, setGridView, setListView } from "../redux/stateSlices/filterPr
 const Sort = () => {
 	const { filter_products, grid_view } = useSelector((state) => state.filterProducts);
 	const dispatch = useDispatch();
-	function sorted(e) {
-		let value = e.target.value;
-		dispatch(sorting(value));
-	}
+
 	return (
 		<Wrapper classNa me="sort-section">
 			<div className="sorting-list--grid">
@@ -25,7 +22,12 @@ const Sort = () => {
 			<div className="sort-selection">
 				<form action="#">
 					<label htmlFor="sort"></label>
-					<select name="sort" id="sort" className="sort-selection--style" onClick={sorted}>
+					<select
+						name="sort"
+						id="sort"
+						className="sort-selection--style"
+						onClick={(e) => dispatch(sorting(e.target.value))}
+					>
 						<option value="lowest">Price(lowest)</option>
 						<option value="#" disabled></option>
 						<option value="highest">Price(highest)</option>
