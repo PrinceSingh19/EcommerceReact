@@ -75,6 +75,7 @@ export const cartSlice = createSlice({
 			};
 		},
 		setIncrease: (state, action) => {
+			console.log(action.payload);
 			let incrementProduct = state.cart.map((currElem) => {
 				if (currElem.id === action.payload) {
 					let incAmount = currElem.amount + 1;
