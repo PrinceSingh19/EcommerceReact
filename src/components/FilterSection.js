@@ -35,7 +35,7 @@ const FilterSection = () => {
 	const updateFilters = (e) => {
 		let name = e.target.name;
 		let value = e.target.value;
-		dispatch(updateFilterValue(name, value));
+		dispatch(updateFilterValue({ name, value }));
 	};
 	return (
 		<Wrapper>

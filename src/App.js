@@ -51,16 +51,18 @@ const App = () => {
 	const { cart } = useSelector((state) => state.cart);
 	const dispatch = useDispatch();
 
+	/* 	useEffect(() => {
+		localStorage.setItem("cartItem", JSON.stringify(cart));
+	}, [cart]);
 	useEffect(() => {
-		let isSubscribing = false;
-		if (!isSubscribing) {
-			dispatch(getProducts());
-			dispatch(cartTotalPriceAmount());
-			//dispatch(filterProducts());
-			//	dispatch(settingFilterProducts());
-			//dispatch(cartTotalPriceAmount());
-			localStorage.setItem("cartItem", JSON.stringify(cart));
-		}
+		dispatch(getProducts());
+		dispatch(cartTotalPriceAmount());
+		//dispatch(filterProducts());
+		//	dispatch(settingFilterProducts());
+		//dispatch(cartTotalPriceAmount());
+	}, [dispatch]); */
+	useEffect(() => {
+		dispatch(getProducts());
 	}, []);
 	return (
 		<ThemeProvider theme={theme}>

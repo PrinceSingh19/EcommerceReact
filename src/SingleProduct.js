@@ -34,7 +34,7 @@ const SingleProduct = () => {
 	useEffect(() => {
 		dispatch(getSingleProduct(`${API}?id=${id}`));
 		// eslint-disable-next-line
-	}, []);
+	}, [dispatch]);
 
 	if (isSingleLoading) {
 		return <div className="page_loading">Loading....</div>;
