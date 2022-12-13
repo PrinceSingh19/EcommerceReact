@@ -1,3 +1,4 @@
+import { assertFunctionParent } from "@babel/types";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
@@ -16,6 +17,7 @@ const initialState = {
 	},
 };
 
+// Below I have added both the ways to update state i.e. traditional redux way and newly immer way of redux toolkit
 export const filterProductsSlice = createSlice({
 	name: "filterProducts",
 	initialState,
@@ -36,7 +38,11 @@ export const filterProductsSlice = createSlice({
 			//3rd way
 			//let maxPrice = Math.max(...priceArr);
 
-			return {
+			state.filter_products = [...action.payload];
+			state.all_products = [...action.payload];
+			state.filters.maxPrice = maxPrice;
+			state.filters.price = maxPrice;
+			/* return {
 				...state,
 				filter_products: [...action.payload],
 				all_products: [...action.payload],
@@ -45,7 +51,7 @@ export const filterProductsSlice = createSlice({
 					maxPrice: maxPrice,
 					price: maxPrice,
 				},
-			};
+			}; */
 		},
 		sortedProducts: (state, action) => {
 			let newSortData;
@@ -68,10 +74,11 @@ export const filterProductsSlice = createSlice({
 			};
 
 			newSortData = tempSortProduct.sort(sortingProducts);
-			return {
+			state.filter_products = newSortData;
+			/* return {
 				...state,
 				filter_products: newSortData,
-			};
+			}; */
 		},
 		setGridView: (state) => {
 			state.grid_view = true;
@@ -84,16 +91,24 @@ export const filterProductsSlice = createSlice({
 		},
 		updateFilterValue: (state, action) => {
 			const { name, value } = action.payload;
-			return {
+			state.filters[name] = value;
+			/* return {
 				...state,
 				filters: {
 					...state.filters,
 					[name]: value,
 				},
-			};
+			}; */
 		},
 		clearFilters: (state, action) => {
-			return {
+			state.filters.text = "";
+			state.filters.category = "all";
+			state.filters.company = "all";
+			state.filters.color = "all";
+			state.filters.maxPrice = state.filters.maxPrice;
+			state.filters.price = state.filters.maxPrice;
+			state.filters.minPrice = state.filters.minPrice;
+			/* return {
 				...state,
 				filters: {
 					...state.filters,
@@ -105,7 +120,7 @@ export const filterProductsSlice = createSlice({
 					price: state.filters.maxPrice,
 					minPrice: state.filters.minPrice,
 				},
-			};
+			}; */
 		},
 		settingFilterProducts: (state, action) => {
 			let { all_products } = state;
@@ -138,10 +153,11 @@ export const filterProductsSlice = createSlice({
 			} else {
 				tempFilterProduct = tempFilterProduct.filter((currElem) => currElem.price <= price);
 			}
-			return {
+			state.filter_products = tempFilterProduct;
+			/* return {
 				...state,
 				filter_products: tempFilterProduct,
-			};
+			}; */
 		},
 	},
 });

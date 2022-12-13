@@ -16,6 +16,8 @@ const initialState = {
 	total_price: "",
 	shipping_fee: 50000,
 };
+// below in reducers I have added both the ways to update the state
+// i.e. traditional redux way and new redux toolkit immer way
 
 export const cartSlice = createSlice({
 	name: "cart",
@@ -63,16 +65,19 @@ export const cartSlice = createSlice({
 			}
 		},
 		removeFromCart: (state, action) => {
-			return {
+			state.cart = state.cart.filter((x) => x.id !== action.payload);
+
+			/* return {
 				...state,
 				cart: state.cart.filter((x) => x.id !== action.payload),
-			};
+			}; */
 		},
 		clearCart: (state, action) => {
-			return {
+			state.cart = [];
+			/* return {
 				...state,
 				cart: [],
-			};
+			}; */
 		},
 		setIncrease: (state, action) => {
 			let incrementProduct = state.cart.map((currElem) => {
@@ -91,10 +96,12 @@ export const cartSlice = createSlice({
 					};
 				}
 			});
-			return {
+
+			state.cart = incrementProduct;
+			/* return {
 				...state,
 				cart: incrementProduct,
-			};
+			}; */
 		},
 		setDecrease: (state, action) => {
 			let updatedProduct = state.cart.map((currElem) => {
@@ -113,10 +120,11 @@ export const cartSlice = createSlice({
 					};
 				}
 			});
-			return {
+			state.cart = updatedProduct;
+			/* return {
 				...state,
 				cart: updatedProduct,
-			};
+			}; */
 		},
 		cartTotalPriceAmount: (state, action) => {
 			let { total_item, total_price } = state.cart.reduce(
@@ -131,11 +139,13 @@ export const cartSlice = createSlice({
 					total_price: 0,
 				}
 			);
-			return {
+			state.total_item = total_item;
+			state.total_price = total_price;
+			/* return {
 				...state,
 				total_item: total_item,
 				total_price: total_price,
-			};
+			}; */
 		},
 	},
 });
