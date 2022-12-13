@@ -16,10 +16,11 @@
 3. JavaScript
 4. React
 5. Styled Component
+6. Redux toolkit for state management
 
 ### Aim of the project
 - To learn react
-- To understand Context API
+- To understand redux workflow
 - To understand Reducer
 - To handle the API
 
