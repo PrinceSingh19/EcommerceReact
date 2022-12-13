@@ -15,7 +15,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "./redux/stateSlices/productsSlice";
 import { getSingleProduct } from "./redux/stateSlices/singleProduct";
-import {
+import filterProductsSlice, {
 	filterProducts,
 	settingFilterProducts,
 	sortedProducts,
@@ -44,30 +44,24 @@ const App = () => {
 			tab: "998px",
 		},
 	};
-	const { products } = useSelector((state) => state.products);
+	const { products, featureProducts } = useSelector((state) => state.products);
+	console.log(products);
+	//console.log(featureProducts);
 	const { sorting_value, filters } = useSelector((state) => state.filterProducts);
 	const { cart } = useSelector((state) => state.cart);
 	const dispatch = useDispatch();
-	const filteredProducts = () => {
-		dispatch(filterProducts(products));
-	};
-	const sortingProducts = () => {
-		dispatch(sortedProducts());
-	};
-	const setFilterProducts = () => {
-		dispatch(settingFilterProducts());
-	};
-	const totalCartAmount = () => {
-		dispatch(cartTotalPriceAmount());
-	};
+
 	useEffect(() => {
-		dispatch(getProducts());
-		//filteredProducts();
-		//sortingProducts();
-		//setFilterProducts();
-		totalCartAmount();
-		localStorage.setItem("cartItem", JSON.stringify(cart));
-	}, [products, sorting_value, filters, cart]);
+		let isSubscribing = false;
+		if (!isSubscribing) {
+			dispatch(getProducts());
+			dispatch(cartTotalPriceAmount());
+			//dispatch(filterProducts());
+			//	dispatch(settingFilterProducts());
+			//dispatch(cartTotalPriceAmount());
+			localStorage.setItem("cartItem", JSON.stringify(cart));
+		}
+	}, []);
 	return (
 		<ThemeProvider theme={theme}>
 			<Router>

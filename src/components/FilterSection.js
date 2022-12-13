@@ -5,14 +5,15 @@ import { FaCheck } from "react-icons/fa";
 import FormatPrice from "../helpers/FormatPrice";
 import { Button } from "../styles/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { updateFilterValue } from "../redux/stateSlices/filterProductsSlice";
+import { clearFilters, updateFilterValue } from "../redux/stateSlices/filterProductsSlice";
 const FilterSection = () => {
 	const dispatch = useDispatch();
 	const {
 		filters: { text, color, price, maxPrice, minPrice },
 		all_products,
-		clearFilters,
+		filter_products,
 	} = useSelector((state) => state.filterProducts);
+	console.log(text, filter_products);
 	// to get the unique data of each field
 	const getUniqueData = (data, property) => {
 		let newVal = data.map((currElem) => {
@@ -44,7 +45,7 @@ const FilterSection = () => {
 						type="text"
 						name="text"
 						value={text}
-						onChange={updateFilters}
+						onChange={(e) => updateFilters(e)}
 						placeholder="Search"
 					/>
 				</form>
@@ -60,7 +61,7 @@ const FilterSection = () => {
 								name="category"
 								className="button"
 								value={currElem}
-								onClick={updateFilters}
+								onClick={(e) => updateFilters(e)}
 							>
 								{currElem}
 							</button>
@@ -76,7 +77,7 @@ const FilterSection = () => {
 						name="company"
 						id="company"
 						className="filter-company--select"
-						onClick={updateFilters}
+						onClick={(e) => updateFilters(e)}
 					>
 						{companyData.map((curElem, index) => {
 							return (
@@ -98,7 +99,7 @@ const FilterSection = () => {
 									type="button"
 									className="color-all--style"
 									key={index}
-									onClick={updateFilters}
+									onClick={(e) => updateFilters(e)}
 									value={curColor}
 									name="color"
 								>
@@ -112,7 +113,7 @@ const FilterSection = () => {
 								className={color === curColor ? "btnStyle active" : "btnStyle"}
 								style={{ backgroundColor: curColor }}
 								key={index}
-								onClick={updateFilters}
+								onClick={(e) => updateFilters(e)}
 								value={curColor}
 								name="color"
 							>
@@ -133,11 +134,11 @@ const FilterSection = () => {
 					name="price"
 					max={maxPrice}
 					value={price}
-					onChange={updateFilters}
+					onChange={(e) => updateFilters(e)}
 				/>
 			</div>
 			<div className="filter-clear">
-				<Button className="btn" onClick={clearFilters}>
+				<Button className="btn" onClick={dispatch(clearFilters())}>
 					clear filters
 				</Button>
 			</div>

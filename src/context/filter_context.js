@@ -54,7 +54,7 @@ const FilterContextProvider = ({ children }) => {
 	useEffect(() => {
 		dispatch({ type: "FILTER_PRODUCTS" });
 		dispatch({ type: "SORTING_PRODUCTS" });
-	}, [products, state.sorting_value, state.filters]);
+	}, [products, state.sorting_value, state.filters]); 
 
 	// to load all the product for grid and list values
 	useEffect(() => {

@@ -2,9 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { BsFillGridFill, BsList } from "react-icons/bs";
 import { useFilterContext } from "../context/filter_context";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { sorting, setGridView, setListView } from "../redux/stateSlices/filterProductsSlice";
 const Sort = () => {
-	const { filter_products, grid_view, setGridView, setListView, sorting } = useFilterContext();
+	const { filter_products, grid_view } = useSelector((state) => state.filterProducts);
 	const dispatch = useDispatch();
 	function sorted(e) {
 		let value = e.target.value;

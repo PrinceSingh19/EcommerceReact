@@ -30,8 +30,8 @@ export const productSlice = createSlice({
 			.addCase(getProducts.fulfilled, (state, action) => {
 				const featureData = action.payload.filter((feature) => feature.featured === true);
 				state.isLoading = false;
-				state.products = state.products.concat(action.payload);
-				state.featureProducts = state.featureProducts.concat(featureData);
+				state.products = action.payload;
+				state.featureProducts = featureData;
 			})
 			.addCase(getProducts.rejected, (state, action) => {
 				state.isLoading = false;

@@ -1,7 +1,11 @@
 import React from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { filterProducts } from "../redux/stateSlices/filterProductsSlice";
 import Product from "./Product";
 const GridView = ({ products }) => {
+	
 	return (
 		<Wrapper className="section">
 			<div className="container grid grid-three-column">

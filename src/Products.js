@@ -1,10 +1,18 @@
 import React from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import FilterSection from "./components/FilterSection";
 import ProductList from "./components/ProductList";
 import Sort from "./components/Sort";
+import {
+	filterProducts,
+	sortedProducts,
+	settingFilterProducts,
+} from "./redux/stateSlices/filterProductsSlice";
 
 const Products = () => {
+
 	return (
 		<Wrapper>
 			<div className="container grid grid-filter-column">

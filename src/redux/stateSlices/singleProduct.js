@@ -26,7 +26,7 @@ export const singleProductSlice = createSlice({
 			})
 			.addCase(getSingleProduct.fulfilled, (state, action) => {
 				state.isSingleLoading = false;
-				state.singleProduct = state.singleProduct.concat(action.payload);
+				state.singleProduct = action.payload;
 			})
 			.addCase(getSingleProduct.rejected, (state, action) => {
 				state.isSingleLoading = false;
