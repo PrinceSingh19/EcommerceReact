@@ -13,7 +13,7 @@ import { ThemeProvider } from "styled-components";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getProducts } from "./redux/stateSlices/productsSlice";
 import { cartTotalPriceAmount } from "./redux/stateSlices/cartSlice";
 
@@ -41,7 +41,6 @@ const App = () => {
 		},
 	};
 
-	const { cart } = useSelector((state) => state.cart);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -50,8 +49,7 @@ const App = () => {
 
 	useEffect(() => {
 		dispatch(cartTotalPriceAmount());
-		localStorage.setItem("cartItem", JSON.stringify(cart));
-	}, [cart, dispatch]);
+	}, [dispatch]);
 
 	return (
 		<ThemeProvider theme={theme}>
